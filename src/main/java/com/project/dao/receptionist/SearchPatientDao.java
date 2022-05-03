@@ -86,28 +86,6 @@ public class SearchPatientDao
 			return null;
 		}	
 	}
-	
-	@Transactional
-	public Patient searchAdharNo(Long adharNo) 
-	{
-		infoLog.logActivities("in SearchPatientDao-searchAdharNo: got= "+adharNo);
-		
-		Session session= sf.getCurrentSession();
-		Query q1=session.createQuery("from Patient where adharNo= :no");
-		q1.setParameter("no", adharNo);
-		
-		try 
-		{
-			Patient temp= (Patient) q1.uniqueResult();
-			infoLog.logActivities("in SearchPatientDao-searchAdharNo: found= "+temp);
-			return temp;
-		}
-		catch(Exception e)
-		{ 
-			infoLog.logActivities("in SearchPatientDao-searchAdharNo: "+e);
-			return null;
-		}	
-	}
 
 	@Transactional
 	public String searchDoctorAssigned(String eid)

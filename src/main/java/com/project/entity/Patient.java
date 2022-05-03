@@ -34,9 +34,6 @@ public class Patient
 		@Column(unique=true)
 		private long mobileNo;	
 		
-		@Column(unique=true)
-		private long adharNo;
-		
 		private String country;
 		private String state;
 		private String city;
@@ -51,7 +48,7 @@ public class Patient
 		Patient(){}
 		
 		public Patient(Name name, String birthdate, String gender, String emailID, long mobileNo,
-				long adharNo, String country, String state, String city, Address address, String bloodGroup,
+				String country, String state, String city, Address address, String bloodGroup,
 				String chronicDiseases, String medicineAllergy, String doctorId) {
 			super();
 			this.name = name;
@@ -59,7 +56,6 @@ public class Patient
 			this.gender = gender;
 			this.emailID = emailID;
 			this.mobileNo = mobileNo;
-			this.adharNo = adharNo;
 			this.country = country;
 			this.state = state;
 			this.city = city;
@@ -97,9 +93,6 @@ public class Patient
 		public long getMobileNo() {
 			return mobileNo;
 		}
-		public long getAdharNo() {
-			return adharNo;
-		}
 		public String getCountry() {
 			return country;
 		}
@@ -129,7 +122,7 @@ public class Patient
 		public String toString() {
 			return "Patient [registrationDate=" + registrationDate + ", pid=" + pid + ", name=" + name + ", birthdate="
 					+ birthdate + ", gender=" + gender + ", emailID=" + emailID + ", mobileNo=" + mobileNo
-					+ ", adharNo=" + adharNo + ", country=" + country + ", state=" + state + ", city=" + city
+					+ ", country=" + country + ", state=" + state + ", city=" + city
 					+ ", address=" + address + ", bloodGroup=" + bloodGroup + ", chronicDiseases=" + chronicDiseases
 					+ ", medicineAllergy=" + medicineAllergy + ", doctorId=" + doctorId + "]";
 		}

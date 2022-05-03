@@ -148,42 +148,4 @@ public class SearchPatientController
 		}
 	}	
 	
-	@RequestMapping(value="/searchPatientByAdharNo.html", method = RequestMethod.POST)
-	public ModelAndView searchAdharNo(@RequestParam("aadharNo")Long adharNo)
-	{
-		try {
-			infoLog.logActivities("in SearchPatientController-searchAdharNo: got= "+adharNo);
-			Patient p1= dao.searchAdharNo(adharNo);
-			infoLog.logActivities("returned to in SearchPatientController-searchAdharNo: got= "+p1);
-			
-			String doctorAssigned=dao.searchDoctorAssigned(p1.getDoctorId());
-			infoLog.logActivities("returned to in SearchPatientController-searchAdharNo: got= "+doctorAssigned);
-	    
-			if(!(p1.getPid().equals(null)) && !(doctorAssigned.equals(null)))
-			{
-	
-				ModelAndView mv= new ModelAndView();
-				mv.setViewName("receptionist/PatientDetailsView");
-				mv.addObject("patient", p1);
-				mv.addObject("doctorAssigned", doctorAssigned);
-				mv.addObject("prescriptionsCount", dao1.prescriptionPrintCount());  //for receptionist only
-				return mv;
-			}
-			else
-			{
-				throw new Exception();
-			}
-	    }
-		catch(Exception e)
-		{
-			infoLog.logActivities("in SearchPatientController-searchAdharNo: "+e);
-			
-			ModelAndView mv= new ModelAndView();
-			mv.setViewName("receptionist/SearchPatientView");
-			mv.addObject("prescriptionsCount", dao1.prescriptionPrintCount());  //for receptionist only
-			mv.addObject("status","false");
-			return mv;
-		}
-	}
-	
 }

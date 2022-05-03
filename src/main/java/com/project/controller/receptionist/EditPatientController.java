@@ -70,14 +70,14 @@ public class EditPatientController
 	}
 
 	@RequestMapping(value="/editPatient.html", method = RequestMethod.POST)
-	public ModelAndView edit(@RequestParam("pid")String pid, @RequestParam("firstName")String firstName, @RequestParam("middleName")String middleName, @RequestParam("lastName")String lastName, @RequestParam("birthdate")String birthdate, @RequestParam("gender")String gender, @RequestParam("email")String email, @RequestParam("mobileNo")Long mobileNo, @RequestParam("adharNo")Long adharNo, @RequestParam("country")String country, @RequestParam("state")String state, @RequestParam("city")String city, @RequestParam("residentialAddress")String residentialAddress, @RequestParam("permanentAddress")String permanentAddress, @RequestParam("bloodGroup")String bloodGroup, @RequestParam("chronicDiseases")String chronicDiseases, @RequestParam("medicineAllergy")String medicineAllergy, @RequestParam("doctorId")String doctorId)
+	public ModelAndView edit(@RequestParam("pid")String pid, @RequestParam("firstName")String firstName, @RequestParam("middleName")String middleName, @RequestParam("lastName")String lastName, @RequestParam("birthdate")String birthdate, @RequestParam("gender")String gender, @RequestParam("email")String email, @RequestParam("mobileNo")Long mobileNo, @RequestParam("country")String country, @RequestParam("state")String state, @RequestParam("city")String city, @RequestParam("residentialAddress")String residentialAddress, @RequestParam("permanentAddress")String permanentAddress, @RequestParam("bloodGroup")String bloodGroup, @RequestParam("chronicDiseases")String chronicDiseases, @RequestParam("medicineAllergy")String medicineAllergy, @RequestParam("doctorId")String doctorId)
 	{
 		try {
 			Name n1=new Name(firstName,middleName,lastName);
 			Address a1= new Address(residentialAddress, permanentAddress);
-			infoLog.logActivities("in EditPatientController-edit: got= "+pid+" "+n1+" "+birthdate+" "+gender+" "+email+" "+mobileNo+" "+adharNo+" "+country+" "+state+" "+city+" "+a1+" "+bloodGroup+" "+chronicDiseases+" "+medicineAllergy+" "+doctorId);
+			infoLog.logActivities("in EditPatientController-edit: got= "+pid+" "+n1+" "+birthdate+" "+gender+" "+email+" "+mobileNo+" "+country+" "+state+" "+city+" "+a1+" "+bloodGroup+" "+chronicDiseases+" "+medicineAllergy+" "+doctorId);
 			
-			int i=dao2.edit(pid,n1,birthdate,gender,email,mobileNo,adharNo,country,state,city,a1,bloodGroup,chronicDiseases,medicineAllergy,doctorId);
+			int i=dao2.edit(pid,n1,birthdate,gender,email,mobileNo,country,state,city,a1,bloodGroup,chronicDiseases,medicineAllergy,doctorId);
 			infoLog.logActivities("returned to EditPatientController-edit: got= "+i);
 			
 				if(i==1)
