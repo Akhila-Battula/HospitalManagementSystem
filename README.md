@@ -1,4 +1,7 @@
 # HospitalManagementSystem
-Welcome to the HMS Web application.
+Welcome to the Hospital Management System Web application.
 #Software engineering project
-projet proposal is avaliable in the files.
+Project includes three Modules:
+1. Administrator
+2. Doctor
+3. Receptionist
