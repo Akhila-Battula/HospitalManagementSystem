@@ -90,3 +90,12 @@ CREATE TABLE `patient` (
   KEY `fk_assigned_doctorid` (`doctorId`),
   CONSTRAINT `fk_assigned_doctorid` FOREIGN KEY (`doctorId`) REFERENCES `employee` (`eid`)
 );
+
+--Procedure alert**
+CREATE PROCEDURE `users_in_system`(OUT doctors INT, OUT patients INT, OUT employees INT, OUT total_opd_income INT)
+BEGIN
+select count(*) into doctors from employee e where e.role = 'doctor' AND e.status = 1;
+select count(*) into patients from patient;
+select count(*) into employees from employee e where e.status = 1;
+select sum(fees) into total_opd_income from opddetails;
+END
